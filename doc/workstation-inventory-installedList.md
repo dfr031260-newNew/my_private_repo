@@ -196,6 +196,39 @@ to track or reinstall them individually.
   Settings Sync) *before* moving, so extensions/keybindings/snippets follow
   you automatically.
 
+## 7. Known gotcha: Git over HTTPS fails with an SSL certificate error
+
+On this machine, `git push`/`fetch`/`clone` over HTTPS failed with:
+
+```
+fatal: unable to access 'https://github.com/...': SSL certificate problem: unable to get local issuer certificate
+```
+
+**Cause:** Norton 360's Web/Mail Shield does SSL/TLS scanning — it intercepts
+HTTPS connections and re-signs the server's certificate with its own locally
+generated root, `Norton Web/Mail Shield Root`. Windows trusts that root (it's
+installed in the OS certificate store, which is why browsers and `curl.exe`
+work fine), but Git for Windows validates HTTPS connections against its own
+bundled CA file (`C:\Program Files\Git\mingw64\etc\ssl\certs\ca-bundle.crt`)
+instead of the Windows store — and that bundle doesn't include Norton's root,
+so git rejects the connection as an untrusted/unknown CA.
+
+**Fix:** point git at the Windows certificate store instead of its own bundle:
+
+```powershell
+git config --global http.sslBackend schannel
+```
+
+This is a one-time global setting — it applies to every repo on the machine,
+not per-repo (`git config --get http.sslBackend` in any repo should now show
+`schannel` with no local override needed).
+
+**If this recurs on a new workstation:** it will only happen if Norton (or any
+other antivirus/firewall doing HTTPS/SSL inspection) is reinstalled there too.
+Run the same `git config --global http.sslBackend schannel` command after
+installing Git — no need to touch Norton's settings or export/import any
+certificates.
+
 ---
 
 ## How this inventory was generated
