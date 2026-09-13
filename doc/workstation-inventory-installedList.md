@@ -2,6 +2,9 @@
 
 Generated: 2026-09-13
 Machine: this Windows 10 Pro workstation (user: dfr031260)
+Repo: https://github.com/dfr031260-newNew/my_private_repo — this is the current
+`origin` remote (the GitHub account was renamed from `dfr031260`; if `git push`
+fails with "Repository not found," check `git remote -v` still points here).
 
 This document inventories installed software and how to get each piece back on a
 new workstation. Companion file: **`winget-export.json`** (same folder) — a
