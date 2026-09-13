@@ -128,7 +128,7 @@ Reinstall from each vendor's site; items needing a license/account are flagged.
 | LAME MP3 encoder | Audacity export codec | Audacity's own "Download LAME" instructions, or rarewares.org | No |
 | LADSPA plugins for Windows | Audacity audio effects | audacity-plugins project / SourceForge | No |
 | I.R.I.S. OCR (Readiris) | OCR, bundled with HP scanner software | Bundled with HP printer/scanner driver package below | No |
-| Microsoft 365 (Office desktop apps, en-us) | Office suite | office.com → "Install Office", sign in | Yes — Microsoft 365 subscription |
+| Microsoft 365 / Office 365 (Word, Excel, PowerPoint, Outlook desktop apps — shows in Windows as "Microsoft 365 - en-us") | Office suite | office.com → "Install Office", sign in | Yes — Microsoft 365 subscription |
 | Adobe Flash Player 32 PPAPI | Legacy browser plugin | **Do not reinstall** — end-of-life, Adobe stopped distributing it (Jan 2021) and it's a known security risk | — |
 | Microsoft Silverlight | Legacy browser plugin | **Do not reinstall** — end-of-life/unsupported | — |
 
